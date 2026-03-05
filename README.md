@@ -1,2 +1,2 @@
 # Gas
-Auschwitz
+For world peace
