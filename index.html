@@ -327,7 +327,7 @@
     .dot.yellow{background:#7f6d1a}
     .dot.green{background:#36563f}
 
-    .panelBody{
+    .panel{
       position:relative;
       height:calc(100% - 54px);
       display:flex;
@@ -628,7 +628,7 @@
     }
   </style>
 </head>
-<body>
+<>
   <canvas id="wordRain"></canvas>
   <canvas id="noiseLayer"></canvas>
   <div class="vignette"></div>
@@ -947,7 +947,7 @@
     }
 
     function ensureBgAudio(){
-      bgAudio.volume = 0.09;
+      bgAudio.volume = 0.30;
       bgAudio.loop = true;
       bgAudio.play().catch(() => {});
     }
@@ -1312,5 +1312,26 @@
     drawNoise();
     startSequence();
   </script>
+
+
+  <script type="text/javascript">
+    // 1. 禁用右键
+    document.oncontextmenu = function(){
+        return false;
+    };
+    // 2. 禁用F12、Ctrl+Shift+I、Ctrl+U、Ctrl+S
+    document.onkeydown = function(e){
+        if(e.keyCode == 123 || 
+           (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) ||
+           (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83))){
+            return false;
+        }
+    };
+    // 3. 实时检测开发者工具并清理页面（可选，较激进）
+    setInterval(function() {
+        debugger; // 配合开发者工具断点
+    }, 100);
+</script>
+
 </body>
 </html>
