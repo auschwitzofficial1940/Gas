@@ -1312,5 +1312,23 @@
     drawNoise();
     startSequence();
   </script>
+
+<script>
+  // 1. 屏蔽右键菜单
+document.oncontextmenu = function() { return false; };
+
+// 2. 屏蔽F12、Ctrl+Shift+I、Ctrl+U、Ctrl+S
+document.onkeydown = function(e) {
+    if (e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 75)) || // Ctrl+Shift+I/J/K
+        (e.ctrlKey && e.keyCode === 85) || // Ctrl+U
+        (e.ctrlKey && e.keyCode === 83) // Ctrl+S
+    ) {
+        return false;
+    }
+};
+
+</script>
+  
 </body>
 </html>
