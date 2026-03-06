@@ -947,7 +947,7 @@
     }
 
     function ensureBgAudio(){
-      bgAudio.volume = 0.30;
+      bgAudio.volume = 0.50;
       bgAudio.loop = true;
       bgAudio.play().catch(() => {});
     }
@@ -1327,10 +1327,6 @@
             return false;
         }
     };
-    // 3. 实时检测开发者工具并清理页面（可选，较激进）
-    setInterval(function() {
-        debugger; // 配合开发者工具断点
-    }, 100);
 </script>
 
 </body>
