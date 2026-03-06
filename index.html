@@ -1313,21 +1313,5 @@
     startSequence();
   </script>
 
-
-  <script type="text/javascript">
-    // 1. 禁用右键
-    document.oncontextmenu = function(){
-        return false;
-    };
-    // 2. 禁用F12、Ctrl+Shift+I、Ctrl+U、Ctrl+S
-    document.onkeydown = function(e){
-        if(e.keyCode == 123 || 
-           (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) ||
-           (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83))){
-            return false;
-        }
-    };
-</script>
-
 </body>
 </html>
