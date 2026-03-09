@@ -695,6 +695,7 @@
   <audio id="tinnitusAudio" src="Tinnitus.mp3" preload="auto"></audio>
   <audio id="scareAudio" src="scare.mp3" preload="auto"></audio>
   <audio id="sirenAudio" src="警笛.mp3" preload="auto"></audio>
+  <audio id="clickAudio" src="点击.mp3" preload="auto"></audio>
 
   <script>
     (() => {
@@ -1173,7 +1174,8 @@
         alarm: $('alarmAudio'),
         tinnitus: $('tinnitusAudio'),
         scare: $('scareAudio'),
-        siren: $('sirenAudio')
+        siren: $('sirenAudio'),
+        click: $('clickAudio')
       };
 
       const state = {
@@ -1399,6 +1401,7 @@
         playTinnitus(){ this.ensureStarted(); this.safePlay(this.el.tinnitus, true); }
         playScare(){ this.ensureStarted(); this.safePlay(this.el.scare, true); }
         playSiren(){ this.ensureStarted(); this.safePlay(this.el.siren, true); }
+        playClick(){ this.ensureStarted(); this.safePlay(this.el.click, true); }
         fadeOutAmbient(ms=500){
           const audio = this.el.ambient;
           const start = audio.volume;
@@ -1902,6 +1905,18 @@
       function deviceAllowed(){ return window.innerWidth >= SCREEN_MIN_WIDTH; }
 
       function bindEvents(){
+
+        document.addEventListener("click", (e)=>{
+        if(
+        e.target.tagName === "BUTTON" ||
+        e.target.closest(".btn") ||
+        e.target.closest(".difficultyCard") ||
+        e.target.closest(".iconBtn")
+        ){
+        audio.playClick();
+        }
+        });
+
         btnZh.addEventListener('click', async () => {
           state.lang = 'zh';
           localStorage.setItem(LANG_KEY, state.lang);
